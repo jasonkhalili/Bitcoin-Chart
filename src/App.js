@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { AppBar,
          Box,
          Toolbar, 
@@ -15,6 +16,16 @@ import "react-datepicker/dist/react-datepicker.css";
 const App = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+
+  axios.get("https://api.coindesk.com/v1/bpi/historical/close.json", {
+    params: {
+      start: "2015-01-01",
+      end: "2021-10-01"
+    }
+  })
+  .then(response => {
+    console.log(response.data);
+  })
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
