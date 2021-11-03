@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { AppBar,
          Box,
@@ -13,6 +13,8 @@ import { AppBar,
 import DatePicker from 'react-datepicker';
 
 import "react-datepicker/dist/react-datepicker.css";
+
+import MyChart from './MyChart';
 
 
 const theme = createTheme({
@@ -29,16 +31,20 @@ const theme = createTheme({
 const App = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [bpi, setBpi] = useState({});
 
-  axios.get("https://api.coindesk.com/v1/bpi/historical/close.json", {
-    params: {
-      start: "2015-01-01",
-      end: "2021-10-01"
-    }
-  })
-  .then(response => {
-    console.log(response.data);
-  })
+  useEffect(() => {
+    axios.get("https://api.coindesk.com/v1/bpi/historical/close.json", {
+      params: {
+        start: "2015-01-01",
+        end: "2021-10-01"
+      }
+    })
+    .then(response => {
+      setBpi(response.data.bpi);
+    })
+  }, [])
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -64,7 +70,7 @@ const App = () => {
           </Grid>
           <Grid item xs={6}>
             <Card>
-              test
+              <MyChart bpi={bpi}/>
             </Card>
           </Grid>
         </Grid>
