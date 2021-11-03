@@ -8,7 +8,8 @@ import { AppBar,
          Typography,
          CssBaseline,
          Grid,
-         Card
+         Card,
+         Container
         } from '@mui/material';
 import DatePicker from 'react-datepicker';
 
@@ -20,11 +21,14 @@ import MyChart from './MyChart';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1a237e',
+      main: '#5569FF',
     },
     secondary: {
-      main: '#1a237e',
+      main: '#5569FF',
     },
+    background: {
+      default: '#EEEEEE',
+    }
   },
 })
 
@@ -48,7 +52,6 @@ const App = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-
         <Box sx={{ flexGrow: 1 }}>
           <CssBaseline />
           <AppBar position="static">
@@ -59,21 +62,43 @@ const App = () => {
             </Toolbar>
           </AppBar>
         </Box>
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <Card>
-              Start Date
-              <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-              End Date
-              <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
-            </Card>
-          </Grid>
-          <Grid item xs={6}>
-            <Card>
-              <MyChart bpi={bpi}/>
-            </Card>
-          </Grid>
-        </Grid>
+        <Box sx={{ marginTop: 2 }}>
+          <Container maxWidth={false}>
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <Box boxShadow={1}>
+                  <Card>
+                    Start Date
+                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                    End Date
+                    <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
+                  </Card>
+                </Box>
+              </Grid>
+              <Grid item xs={6}>
+                <Box boxShadow={1}>
+                  <Card>
+                    hey
+                  </Card>
+                </Box>
+              </Grid>
+              <Grid item xs={12}>
+                <Box boxShadow={1}>
+                  <Card>
+                    hey
+                  </Card>
+                </Box>
+              </Grid>
+              <Grid item xs={12}>
+                <Box boxShadow={1}>
+                  <Card>
+                    <MyChart bpi={bpi}/>
+                  </Card>
+                </Box>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
       </ThemeProvider>
     </>
   );
