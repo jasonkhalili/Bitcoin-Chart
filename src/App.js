@@ -65,7 +65,7 @@ const App = () => {
         <Box sx={{ marginTop: 2 }}>
           <Container maxWidth={false}>
             <Grid container spacing={2}>
-              <Grid item xs={6}>
+              <Grid item xs={3}>
                 <Box boxShadow={1}>
                   <Card>
                     Start Date
@@ -75,21 +75,7 @@ const App = () => {
                   </Card>
                 </Box>
               </Grid>
-              <Grid item xs={6}>
-                <Box boxShadow={1}>
-                  <Card>
-                    hey
-                  </Card>
-                </Box>
-              </Grid>
-              <Grid item xs={12}>
-                <Box boxShadow={1}>
-                  <Card>
-                    hey
-                  </Card>
-                </Box>
-              </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={9}>
                 <Box boxShadow={1}>
                   <Card>
                     <MyChart bpi={bpi}/>
