@@ -13,6 +13,8 @@ const MyChart = (props) => {
                 datasets: [
                     {
                         data: Object.values(props.bpi),
+                        borderColor: "#5569FF",
+                        backgroundColor: "#5569FF"
                     }
                 ]
             }

@@ -40,7 +40,7 @@ const App = () => {
   useEffect(() => {
     axios.get("https://api.coindesk.com/v1/bpi/historical/close.json", {
       params: {
-        start: "2015-01-01",
+        start: "2021-01-01",
         end: "2021-10-01"
       }
     })
