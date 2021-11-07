@@ -69,9 +69,18 @@ const App = () => {
                 <Box boxShadow={1}>
                   <Card>
                     Start Date
-                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                    <DatePicker 
+                    selected={startDate} 
+                    onChange={(date) => setStartDate(date)}
+                    minDate={new Date('2011-01-01')}
+                    showYearDropdown={true}
+                    />
                     End Date
-                    <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
+                    <DatePicker 
+                    selected={endDate} 
+                    onChange={(date) => setEndDate(date)}
+                    maxDate={Date.now()}
+                    />
                   </Card>
                 </Box>
               </Grid>
