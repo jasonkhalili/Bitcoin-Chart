@@ -73,6 +73,7 @@ const App = () => {
                     selected={startDate} 
                     onChange={(date) => setStartDate(date)}
                     minDate={new Date('2011-01-01')}
+                    maxDate={Date.now()}
                     showYearDropdown={true}
                     />
                     End Date
