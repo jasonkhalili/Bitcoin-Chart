@@ -11,9 +11,10 @@ const MyChart = (props) => {
                 labels: Object.keys(props.bpi),
                 datasets: [
                     {
+                        label: 'BTC/USD',
                         data: Object.values(props.bpi),
                         borderColor: "#5569FF",
-                        backgroundColor: "#5569FF"
+                        backgroundColor: "#5569FF",
                     }
                 ]
             }

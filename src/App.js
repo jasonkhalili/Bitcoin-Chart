@@ -9,6 +9,7 @@ import { AppBar,
          CssBaseline,
          Grid,
          Card,
+         CardContent,
          Container
         } from '@mui/material';
 import DatePicker from 'react-datepicker';
@@ -27,9 +28,12 @@ const theme = createTheme({
       main: '#5569FF',
     },
     background: {
-      default: '#EEEEEE',
+      default: 'rgb(242, 245, 249)',
     }
   },
+  typography: {
+    fontFamily: 'Verdana',
+  }
 })
 
 const App = () => {
@@ -62,32 +66,38 @@ const App = () => {
             </Toolbar>
           </AppBar>
         </Box>
-        <Box sx={{ marginTop: 2 }}>
-          <Container maxWidth={false}>
-            <Grid container spacing={2}>
+        <Box>
+          <Container maxWidth={false} sx={{ marginTop: 3 }}>
+            <Grid container spacing={3}>
               <Grid item xs={3}>
-                <Box boxShadow={1}>
-                  <Card>
-                    Start Date
-                    <DatePicker 
-                    onChange={(date) => setStartDate(date)}
-                    minDate={new Date('January 1, 2011')}
-                    maxDate={Date.now()}
-                    showYearDropdown={true}
-                    selected={new Date('January 1, 2011')}
-                    />
-                    End Date
+                <Card>
+                  <CardContent>
+                    <Typography variant="h5" sx={{ fontWeight: 500}} gutterBottom>
+                      Start Date
+                    </Typography>
+                    <Box sx={{ marginBottom: 4 }}>
+                      <DatePicker
+                      onChange={(date) => setStartDate(date)}
+                      minDate={new Date('January 1, 2011')}
+                      maxDate={Date.now()}
+                      showYearDropdown={true}
+                      selected={new Date('January 1, 2011')}
+                      />
+                    </Box>
+                    <Typography variant="h5" sx={{ fontWeight: 500 }} gutterBottom>
+                      End Date
+                    </Typography>
                     <DatePicker 
                     selected={endDate} 
                     onChange={(date) => setEndDate(date)}
                     minDate={new Date('January 1, 2011')}
                     maxDate={Date.now()}
                     />
-                  </Card>
-                </Box>
+                  </CardContent>
+                </Card>
               </Grid>
               <Grid item xs={9}>
-                <Box boxShadow={1}>
+                <Box>
                   <Card>
                     <MyChart bpi={bpi}/>
                   </Card>
