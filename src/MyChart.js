@@ -6,7 +6,6 @@ const MyChart = (props) => {
     const [data, setData] = useState({});
 
     useEffect(() => {
-        console.log(props.bpi);
         setData(
             {
                 labels: Object.keys(props.bpi),

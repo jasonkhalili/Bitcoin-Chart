@@ -47,7 +47,7 @@ const App = () => {
     .then(response => {
       setBpi(response.data.bpi);
     })
-  }, [])
+  }, [startDate, endDate])
 
   return (
     <>
@@ -80,6 +80,7 @@ const App = () => {
                     <DatePicker 
                     selected={endDate} 
                     onChange={(date) => setEndDate(date)}
+                    minDate={new Date('2011-01-01')}
                     maxDate={Date.now()}
                     />
                   </Card>
