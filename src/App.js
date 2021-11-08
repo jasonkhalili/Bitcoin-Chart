@@ -33,15 +33,15 @@ const theme = createTheme({
 })
 
 const App = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date('January 1, 2011'));
+  const [endDate, setEndDate] = useState(new Date(Date.now()));
   const [bpi, setBpi] = useState({});
 
   useEffect(() => {
     axios.get("https://api.coindesk.com/v1/bpi/historical/close.json", {
       params: {
-        start: "2011-01-01",
-        end: "2021-10-01"
+        start: startDate.toISOString().split('T')[0],
+        end: endDate.toISOString().split('T')[0]
       }
     })
     .then(response => {
@@ -70,17 +70,17 @@ const App = () => {
                   <Card>
                     Start Date
                     <DatePicker 
-                    selected={startDate} 
                     onChange={(date) => setStartDate(date)}
-                    minDate={new Date('2011-01-01')}
+                    minDate={new Date('January 1, 2011')}
                     maxDate={Date.now()}
                     showYearDropdown={true}
+                    selected={new Date('January 1, 2011')}
                     />
                     End Date
                     <DatePicker 
                     selected={endDate} 
                     onChange={(date) => setEndDate(date)}
-                    minDate={new Date('2011-01-01')}
+                    minDate={new Date('January 1, 2011')}
                     maxDate={Date.now()}
                     />
                   </Card>
