@@ -32,7 +32,18 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontFamily: 'Verdana',
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
   },
   components: {
     MuiCard: {
@@ -75,46 +86,47 @@ const App = () => {
             </Toolbar>
           </AppBar>
         </Box>
-        <Box>
-          <Container maxWidth={false} sx={{ marginTop: 3 }}>
-            <Grid container spacing={3}>
-              <Grid item xs={3}>
-                <Card>
-                  <CardContent>
-                    <Typography variant="h5" sx={{ fontWeight: 500}} gutterBottom>
-                      Start Date
-                    </Typography>
-                    <Box sx={{ marginBottom: 4 }}>
-                      <DatePicker
-                      onChange={(date) => setStartDate(date)}
-                      minDate={new Date('January 1, 2011')}
-                      maxDate={Date.now()}
-                      showYearDropdown={true}
-                      selected={new Date('January 1, 2011')}
-                      />
-                    </Box>
-                    <Typography variant="h5" sx={{ fontWeight: 500 }} gutterBottom>
-                      End Date
-                    </Typography>
-                    <DatePicker 
-                    selected={endDate} 
-                    onChange={(date) => setEndDate(date)}
+        <Container maxWidth={false} sx={{ marginTop: 3 }}>
+          <Grid container spacing={3}>
+            <Grid item xs={3}>
+              <Card>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom>
+                    Start Date
+                  </Typography>
+                  <DatePicker
+                    onChange={(date) => setStartDate(date)}
+                    selected={new Date('January 1, 2011')}
                     minDate={new Date('January 1, 2011')}
                     maxDate={Date.now()}
-                    />
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={9}>
-                <Box>
-                  <Card>
-                    <MyChart bpi={bpi}/>
-                  </Card>
-                </Box>
-              </Grid>
+                    showYearDropdown={true}
+                  />
+                </CardContent>
+              </Card>
+              <Card sx={{ marginTop: 3 }}>
+                <CardContent>
+                  <Typography variant="h6" sx={{ fontWeight: 500 }} gutterBottom>
+                    End Date
+                  </Typography>
+                  <DatePicker 
+                    onChange={(date) => setEndDate(date)}
+                    selected={endDate} 
+                    minDate={new Date('January 1, 2011')}
+                    maxDate={Date.now()}
+                    showYearDropdown={true}
+                  />
+                </CardContent>
+              </Card>
             </Grid>
-          </Container>
-        </Box>
+            <Grid item xs={9}>
+              <Box>
+                <Card>
+                  <MyChart bpi={bpi}/>
+                </Card>
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
       </ThemeProvider>
     </>
   );
