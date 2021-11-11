@@ -96,7 +96,7 @@ const App = () => {
                   </Typography>
                   <DatePicker
                     onChange={(date) => setStartDate(date)}
-                    selected={new Date('January 1, 2011')}
+                    selected={startDate}
                     minDate={new Date('January 1, 2011')}
                     maxDate={Date.now()}
                     showYearDropdown={true}
