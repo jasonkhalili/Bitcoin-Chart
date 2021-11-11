@@ -11,7 +11,7 @@ const MyChart = (props) => {
                 labels: Object.keys(props.bpi),
                 datasets: [
                     {
-                        label: 'BTC/USD',
+                        label: 'Price in $',
                         data: Object.values(props.bpi),
                         borderColor: "#5569FF",
                         backgroundColor: "#5569FF",
@@ -27,7 +27,7 @@ const MyChart = (props) => {
         );
     } else {
         return (
-            <h1>didn't work fam</h1>
+            <h1>Failed to load Chart</h1>
         );
     }
 }
