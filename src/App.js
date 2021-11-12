@@ -16,8 +16,6 @@ import { AppBar,
 import { LocalizationProvider, DesktopDatePicker } from '@mui/lab';
 import DateAdapter from '@mui/lab/AdapterDateFns';
 
-import "react-datepicker/dist/react-datepicker.css";
-
 import MyChart from './MyChart';
 
 
@@ -99,7 +97,6 @@ const App = () => {
                       Start Date
                     </Typography>
                     <DesktopDatePicker 
-                      label="Start Date"
                       inputFormat="MM/dd/yyyy"
                       value={startDate}
                       onChange={(date) => setStartDate(date)}
@@ -113,7 +110,6 @@ const App = () => {
                       End Date
                     </Typography>
                     <DesktopDatePicker 
-                      label="Start Date"
                       inputFormat="MM/dd/yyyy"
                       value={endDate}
                       onChange={(date) => setEndDate(date)}
