@@ -10,9 +10,11 @@ import { AppBar,
          Grid,
          Card,
          CardContent,
-         Container
+         Container,
+         TextField
         } from '@mui/material';
-import DatePicker from 'react-datepicker';
+import { LocalizationProvider, DesktopDatePicker } from '@mui/lab';
+import DateAdapter from '@mui/lab/AdapterDateFns';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -75,59 +77,62 @@ const App = () => {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Box sx={{ flexGrow: 1 }}>
-          <CssBaseline />
-          <AppBar position="static">
-            <Toolbar>
-              <Typography variant="h5">
-                Bitcoin Chart
-              </Typography>
-            </Toolbar>
-          </AppBar>
-        </Box>
-        <Container maxWidth={false} sx={{ marginTop: 3 }}>
-          <Grid container spacing={3}>
-            <Grid item xs={3}>
-              <Card>
-                <CardContent>
-                  <Typography variant="h6" gutterBottom>
-                    Start Date
-                  </Typography>
-                  <DatePicker
-                    onChange={(date) => setStartDate(date)}
-                    selected={startDate}
-                    minDate={new Date('January 1, 2011')}
-                    maxDate={Date.now()}
-                    showYearDropdown={true}
-                  />
-                </CardContent>
-              </Card>
-              <Card sx={{ marginTop: 3 }}>
-                <CardContent>
-                  <Typography variant="h6" sx={{ fontWeight: 500 }} gutterBottom>
-                    End Date
-                  </Typography>
-                  <DatePicker 
-                    onChange={(date) => setEndDate(date)}
-                    selected={endDate} 
-                    minDate={new Date('January 1, 2011')}
-                    maxDate={Date.now()}
-                    showYearDropdown={true}
-                  />
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={9}>
-              <Box>
+      <LocalizationProvider dateAdapter={DateAdapter}>
+
+        <ThemeProvider theme={theme}>
+          <Box sx={{ flexGrow: 1 }}>
+            <CssBaseline />
+            <AppBar position="static">
+              <Toolbar>
+                <Typography variant="h5">
+                  Bitcoin Chart
+                </Typography>
+              </Toolbar>
+            </AppBar>
+          </Box>
+          <Container maxWidth={false} sx={{ marginTop: 3 }}>
+            <Grid container spacing={3}>
+              <Grid item xs={3}>
                 <Card>
-                  <MyChart bpi={bpi}/>
+                  <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                      Start Date
+                    </Typography>
+                    <DesktopDatePicker 
+                      label="Start Date"
+                      inputFormat="MM/dd/yyyy"
+                      value={startDate}
+                      onChange={(date) => setStartDate(date)}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </CardContent>
                 </Card>
-              </Box>
+                <Card sx={{ marginTop: 3 }}>
+                  <CardContent>
+                    <Typography variant="h6" sx={{ fontWeight: 500 }} gutterBottom>
+                      End Date
+                    </Typography>
+                    <DesktopDatePicker 
+                      label="Start Date"
+                      inputFormat="MM/dd/yyyy"
+                      value={endDate}
+                      onChange={(date) => setEndDate(date)}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={9}>
+                <Box>
+                  <Card>
+                    <MyChart bpi={bpi}/>
+                  </Card>
+                </Box>
+              </Grid>
             </Grid>
-          </Grid>
-        </Container>
-      </ThemeProvider>
+          </Container>
+        </ThemeProvider>
+      </LocalizationProvider>
     </>
   );
 }
