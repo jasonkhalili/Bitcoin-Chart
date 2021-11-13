@@ -93,25 +93,25 @@ const App = () => {
               <Grid item xs={3}>
                 <Card>
                   <CardContent>
-                    <Typography variant="h6" gutterBottom>
-                      Start Date
+                    <Typography variant="h6" sx={{ marginBottom: 2 }}>
+                      Select dates:
                     </Typography>
                     <DesktopDatePicker 
                       inputFormat="MM/dd/yyyy"
                       value={startDate}
+                      label="Start Date"
+                      minDate={new Date('January 1, 2011')}
+                      maxDate={Date.now()}
                       onChange={(date) => setStartDate(date)}
                       renderInput={(params) => <TextField {...params} />}
                     />
-                  </CardContent>
-                </Card>
-                <Card sx={{ marginTop: 3 }}>
-                  <CardContent>
-                    <Typography variant="h6" sx={{ fontWeight: 500 }} gutterBottom>
-                      End Date
-                    </Typography>
+                    <Box sx={{ marginBottom: 3 }} />
                     <DesktopDatePicker 
                       inputFormat="MM/dd/yyyy"
                       value={endDate}
+                      label="End Date"
+                      minDate={new Date('January 1, 2011')}
+                      maxDate={Date.now()}
                       onChange={(date) => setEndDate(date)}
                       renderInput={(params) => <TextField {...params} />}
                     />
