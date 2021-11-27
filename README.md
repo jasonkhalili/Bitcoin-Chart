@@ -3,6 +3,12 @@
 An interactive chart displaying Bitcoin's value over time. Built using [React](https://reactjs.org/), [Material UI](https://mui.com/), [Axios](https://axios-http.com/), and [ChartJs](https://github.com/reactchartjs/react-chartjs-2). Data is retreieved from the [Coindesk](https://www.coindesk.com/price/bitcoin/) API.
 
 # Getting Started
+[Live Version](https://practical-kepler-bcf067.netlify.app/)
+
+###### OR
+
+Run Locally:
+
 ```
 npm install
 npm start
